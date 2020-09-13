@@ -11,7 +11,9 @@ object Hello extends App {
 
   // Methods
   val x = 0
+
   def f(y: Int) = y + 1
+
   val result = {
     val x = f(3)
     x * x
@@ -27,6 +29,7 @@ object Hello extends App {
 
     loop(a, 0)
   }
+
   println(sum(1, 10))
 
 
@@ -40,6 +43,7 @@ object Hello extends App {
 
   // Sorting List
   val cond: (Int, Int) => Boolean = (x, y) => x < y
+
   def insert(x: Int, xs: List[Int]): List[Int] =
     xs match {
       case List() => x :: Nil
@@ -47,13 +51,25 @@ object Hello extends App {
         if (cond(x, y)) x :: y :: ys
         else y :: insert(x, ys)
     }
+
   println(insert(2, 1 :: 3 :: Nil))
   println(insert(1, 2 :: 3 :: Nil))
   println(insert(3, 1 :: 2 :: Nil))
 
   //Map
-  println(Some(1).map(x => x+ 1 ))
-  val arr = Array(2,4).filter(x => x%2 ==0 )
+  println(Some(1).map(x => x + 1))
+  val arr = Array(2, 4).filter(x => x % 2 == 0)
   println(arr.mkString("Array(", ", ", ")"))
   // println(arr) not working properly
+
+  //Syntactic Conveniences
+  type Result = Either[String, (Int, Int)]
+
+  def divide(dividend: Int, divisor: Int): Result =
+    if (divisor == 0) Left("Division by zero")
+    else Right((dividend / divisor, dividend % divisor))
+
+  println(divide(dividend = 5, divisor = 4))
+  println(divide(2, 0))
+  println(divide(8, 4))
 }

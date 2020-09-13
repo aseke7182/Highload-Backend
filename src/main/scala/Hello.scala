@@ -23,6 +23,7 @@ object Hello extends App {
 
   //tailrec
   def sum(a: Int, b: Int): Int = {
+    @tailrec
     def loop(x: Int, acc: Int): Int =
       if (x > b) acc
       else loop(x + 1, acc + x)

@@ -1,6 +1,0 @@
-[0m[[0m[0mdebug[0m] [0m[0mAcquiring lock on file /home/aseke/Desktop/Highload/project/target/.sbt-compilation-infos/highload-test/.sbt-idea-lock ...[0m
-[0m[[0m[31merror[0m] [0m[0m/home/aseke/Desktop/Highload/src/test/scala/test.scala:1:7: identifier expected but '{' found.[0m
-[0m[[0m[31merror[0m] [0m[0mclass {[0m
-[0m[[0m[31merror[0m] [0m[0m      ^[0m
-[0m[[0m[31merror[0m] [0m[0mone error found[0m
-[0m[[0m[0mdebug[0m] [0m[0mReleasing lock on file /home/aseke/Desktop/Highload/project/target/.sbt-compilation-infos/highload-test/.sbt-idea-lock.[0m

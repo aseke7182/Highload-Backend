@@ -17,12 +17,17 @@ object Main extends App {
   // 4) Checking for validness of input
   // 5) Either
   // 6) Calculation
+  // 7) Code Optimization
+  // 8) Tests
 
   // TODO:
   // 1) Either: Done
   // 2) Priority: Done
   // 3) Calculation : Done
-  // 4) Code optimization
-  // 5) Tests
+  // 4) Code optimization : Done
+  // 5) Tests : Done
+
+  // By: Aseke7182
+  // 14.09.2020
 }
 

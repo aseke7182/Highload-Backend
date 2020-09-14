@@ -1,7 +1,7 @@
 package Calculator
 
 import scala.collection.mutable
-
+import Calculator.Constants._
 class Calculation {
 
   class Operation(c: Char) {
@@ -50,10 +50,10 @@ class Calculation {
           nums.push(x)
           x = 0
           if (oneOperation) {
-            return Left("Something went wrong")
+            return Left(error)
           }
           val newOp = new Operation(char)
-          if (newOp.priority == 0) return Left("Something went wrong")
+          if (newOp.priority == 0) return Left(error)
 
           while (op.nonEmpty && op.top.priority >= newOp.priority) {
             calculation()
@@ -66,7 +66,7 @@ class Calculation {
     while (op.nonEmpty & nums.length > 1) {
       calculation()
     }
-    if (op.nonEmpty) return Left("Something went wrong")
+    if (op.nonEmpty) return Left(error)
     Right((nums.top).setScale(2, BigDecimal.RoundingMode.HALF_UP).toDouble)
   }
 }

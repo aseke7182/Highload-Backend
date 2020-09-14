@@ -16,10 +16,13 @@ object Main extends App {
   // 3) Priority
   // 4) Checking for validness of input
   // 5) Either
+  // 6) Calculation
 
   // TODO:
   // 1) Either: Done
   // 2) Priority: Done
-  // 3) Calculation
+  // 3) Calculation : Done
+  // 4) Code optimization
+  // 5) Tests
 }
 

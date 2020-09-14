@@ -1,4 +1,5 @@
 package Calculator
+
 import scala.collection.mutable
 
 class Calculation {
@@ -6,8 +7,8 @@ class Calculation {
   class Operation(c: Char) {
     val char: Char = c
     val priority: Int = c match {
-      case '+' | '-' => 2
-      case '*' | '/' => 1
+      case '+' | '-' => 1
+      case '*' | '/' => 2
       case _ => 0
     }
 
@@ -23,9 +24,18 @@ class Calculation {
     }
   }
 
+  def calculation(): Unit ={
+    val c = op.top
+    op.pop
+    val firstVal = nums.top
+    nums.pop
+    val secondVal = nums.top;
+    nums.pop
+    nums.push(calculate(x = firstVal, y = secondVal, c))
+  }
+
   var nums: mutable.Stack[BigDecimal] = mutable.Stack[BigDecimal]()
   var op: mutable.Stack[Operation] = mutable.Stack[Operation]()
-
 
   var x = 0
   var oneOperation = false
@@ -39,25 +49,24 @@ class Calculation {
         case _ =>
           nums.push(x)
           x = 0
-          if (oneOperation) op.push(new Operation('_'))
-          else op.push(new Operation(char))
+          if (oneOperation) {
+            return Left("Something went wrong")
+          }
+          val newOp = new Operation(char)
+          if (newOp.priority == 0) return Left("Something went wrong")
+
+          while (op.nonEmpty && op.top.priority >= newOp.priority) {
+            calculation()
+          }
+          op.push(newOp)
           oneOperation = true
       }
     }
-
-    if (x > 0) nums.push(x)
-    while (op.nonEmpty) {
-      val c = op.top
-      op.pop
-      if (c.priority == 0 | nums.size < 2) {
-        return Left("Something went wrong")
-      }
-      val firstVal = nums.top;
-      nums.pop
-      val secondVal = nums.top;
-      nums.pop
-      nums.push(calculate(x = firstVal, y = secondVal, c))
+    if (x > 0 | line(line.length - 1) == '0') nums.push(x)
+    while (op.nonEmpty & nums.length > 1) {
+      calculation()
     }
+    if (op.nonEmpty) return Left("Something went wrong")
     Right((nums.top).setScale(2, BigDecimal.RoundingMode.HALF_UP).toDouble)
   }
 }

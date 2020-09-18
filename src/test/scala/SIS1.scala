@@ -1,3 +1,4 @@
+import Week1_Acquaintance.{Hello, LeetCode}
 import org.scalatest.FunSuite
 
 class SIS1 extends FunSuite {

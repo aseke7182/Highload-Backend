@@ -1,7 +1,7 @@
-package Calculator
+package Week2_Calculator
 
 import scala.collection.mutable
-import Calculator.Constants._
+import Week2_Calculator.Constants._
 class Calculation {
 
   class Operation(c: Char) {

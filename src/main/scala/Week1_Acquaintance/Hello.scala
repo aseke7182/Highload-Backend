@@ -1,3 +1,5 @@
+package Week1_Acquaintance
+
 import scala.annotation.tailrec
 
 object Hello extends App {

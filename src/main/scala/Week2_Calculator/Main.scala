@@ -1,5 +1,5 @@
-package Calculator
-import Calculator.Calculation
+package Week2_Calculator
+import Week2_Calculator.Calculation
 
 object Main extends App {
 

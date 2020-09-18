@@ -1,6 +1,6 @@
 import org.scalatest.FunSuite
-import Calculator.Calculation
-import Calculator.Constants._
+import Week2_Calculator.Calculation
+import Week2_Calculator.Constants._
 class CalculatorTest extends FunSuite {
   test("CalculatorTest"){
     val test1 = "2+2"

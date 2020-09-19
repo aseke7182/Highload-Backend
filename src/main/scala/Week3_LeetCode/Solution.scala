@@ -1,5 +1,7 @@
 package Week3_LeetCode
 
+import scala.annotation.tailrec
+
 object Solution extends App {
 
   def kidsWithCandies(candies: Array[Int], extraCandies: Int): Unit = {
@@ -75,15 +77,42 @@ object Solution extends App {
   def buildArray(target: Array[Int], n: Int): Unit = {
     var ans = List[String]()
     var index = 0
-    for(i <- 1 to target(target.length-1)){
-      ans:+="Push"
-      if( target(index) != i){
-        ans:+="Pop"
-      }  else{
-        index+=1
+    for (i <- 1 to target(target.length - 1)) {
+      ans :+= "Push"
+      if (target(index) != i) {
+        ans :+= "Pop"
+      } else {
+        index += 1
       }
     }
     ans
+  }
+
+
+  class ListNode(_x: Int = 0, _next: ListNode = null) {
+    var next: ListNode = _next
+    var x: Int = _x
+  }
+
+  def fromBinaryStringToDecimal(str: String): Unit = {
+    var ans = 0
+    var exp = 0
+    for (i <- (str.length - 1) to 0 by -1) {
+      ans += (math.pow(2, exp).toInt) * (str(i) - 48)
+      exp += 1
+    }
+    println(ans)
+  }
+
+  def getDecimalValue(head: ListNode): Any = {
+
+    @tailrec
+    def getString(head: ListNode, res: String = ""): String = {
+      if (head == null) return res
+      getString(head.next, res + head.x)
+    }
+
+    Integer.parseInt(getString(head), 2)
   }
 
 }

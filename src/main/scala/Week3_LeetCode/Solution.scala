@@ -115,4 +115,30 @@ object Solution extends App {
     Integer.parseInt(getString(head), 2)
   }
 
+  class CustomFunction {
+    // Returns f(x, y) for any given positive integers x and y.
+    // Note that f(x, y) is increasing with respect to both x and y.
+    // i.e. f(x, y) < f(x + 1, y), f(x, y) < f(x, y + 1)
+    def f(x: Int, y: Int): Int = {
+      1
+    }
+  };
+
+  def findSolution(customfunction: CustomFunction, z: Int): List[List[Int]] = {
+    var ans = List[List[Int]]()
+    var x = 1
+    var y = 1000;
+    while (x <= 1000 && y > 0) {
+      val v = customfunction.f(x, y);
+      if (v > z) y -= 1;
+      else if (v < z) x += 1;
+      else {
+        ans :+= List(x, y)
+        x += 1
+        y -= 1
+      }
+    }
+    ans
+  }
+
 }

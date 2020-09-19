@@ -141,4 +141,18 @@ object Solution extends App {
     ans
   }
 
+  def intersection(nums1: Array[Int], nums2: Array[Int]): Unit = {
+    var ans = Set[Int]()
+    val sor1 = nums1.sorted
+    val sor2 = nums2.sorted
+    var i = 0
+    var j = 0
+    while (i < sor1.length && j < sor2.length) {
+      println(s"$i $j")
+      if (sor1(i) == sor2(j)) ans += sor1(i)
+      if (sor1(i) >= sor2(j)) j+= 1
+      else i += 1
+    }
+    ans.toArray
+  }
 }

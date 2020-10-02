@@ -1,7 +1,8 @@
 package Week5
 
-import java.io.{FileNotFoundException, IOException}
+import java.io._
 
+import Logic._
 import io.circe._
 import io.circe.generic.auto._
 import io.circe.parser._
@@ -24,17 +25,29 @@ object SIS5 extends App {
     println(json)
   }
 
-  case class Product(name: String, count: Int, price: BigDecimal, total: BigDecimal)
 
-  val branch = "Филиал".r
-  val BIN = "БИН".r
-  val countAndPrice = "^[0-9]+\\,[0-9]{3} [x] [0-9]+\\,[0-9]{2}$".r
-  var text = ""
+  case class Check(products: Array[Product])
+
+
+  var products = Array[String]()
+  var notProducts = Array[String]()
+  var productListBoolean = false
   try {
     val file = Source.fromFile("raw.txt")
     for (line <- file.getLines) {
-
+      if (line == "ПРОДАЖА") productListBoolean = true
+      else if (line == "Банковская карта:") productListBoolean = false
+      if (productListBoolean) products :+= line
+      else notProducts :+= line
     }
+    val productList = ProductParser(products)
+    val check = Check(productList)
+    val json = check.asJson.noSpaces
+    val writer = new PrintWriter(new File("data.json"))
+    writer.write(json)
+    writer.close()
+
+
   } catch {
     case ex: FileNotFoundException => {
       println("Missing file exception")

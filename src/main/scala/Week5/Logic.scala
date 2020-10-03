@@ -4,7 +4,6 @@ import java.io.{File, FileNotFoundException, IOException, PrintWriter}
 
 import Regex._
 import Classes._
-//import Week5.SIS5.{notProducts, products}
 import io.circe.syntax.EncoderOps
 
 import io.circe.generic.auto._

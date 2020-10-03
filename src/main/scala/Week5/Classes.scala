@@ -1,7 +1,5 @@
 package Week5
 
-import java.util.Date
-
 object Classes {
 
   case class Product(id: Int, name: String, count: Int, price: BigDecimal, total: BigDecimal)

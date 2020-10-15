@@ -13,5 +13,4 @@ object Regex {
   val numberOfId: Regex = "^[1-9][0-9]*\\.$".r
   val stoimost = "^((?!Стоимость).)*$".r
   val productName = "^(?![0-9]).*".r
-
 }

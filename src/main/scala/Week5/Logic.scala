@@ -75,6 +75,7 @@ object Logic {
     for (line <- notProducts) {
       if (branchRegex.matches(line)) {
         branch = line.substring(7)
+        println(branch)
       }
       if (BINRegex.matches(line)) {
         BIN = line.substring(4)

@@ -13,7 +13,6 @@ object Main {
       val gabblerRef = context.spawn(Gabbler(), "gabbler")
       context.watch(gabblerRef)
       chatRoom ! ChatRoom.GetSession("Askar", gabblerRef)
-//      chatRoom ! ChatRoom.PostMessage()
 
       Behaviors.receiveSignal {
         case (_, Terminated(_)) =>

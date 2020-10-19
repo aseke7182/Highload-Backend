@@ -1,0 +1,5 @@
+package Actors
+
+object Supervisor {
+
+}

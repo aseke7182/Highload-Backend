@@ -113,4 +113,5 @@ object Main extends App {
     z + y + x + z + y + x
     println(builder.result())
   }
+  lazy_Evaluation()
 }

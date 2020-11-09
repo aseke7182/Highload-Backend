@@ -4,9 +4,9 @@ enablePlugins(JavaAppPackaging, AshScriptPlugin)
 dockerBaseImage := "openjdk:8-jre-alpine"
 packageName in Docker := "akkahttp-quickstart"
 
-name := "Highload"
+name := "w"
 
-version := "0.1"
+version := "0.3"
 
 scalaVersion := "2.13.3"
 val circeVersion = "0.12.3"
@@ -29,3 +29,10 @@ libraryDependencies ++= Seq(
   "io.circe" %% "circe-generic",
   "io.circe" %% "circe-parser"
 ).map(_ % circeVersion)
+
+dockerCommands := dockerCommands.value.map {
+  case ExecCmd("CMD", _ @ _*) =>
+    ExecCmd("CMD", "/opt/docker/bin/akkahttp-sample")
+  case other =>
+    other
+}

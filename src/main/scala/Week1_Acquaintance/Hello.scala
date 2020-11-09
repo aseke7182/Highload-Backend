@@ -5,7 +5,7 @@ import scala.annotation.tailrec
 object Hello extends App {
   //Syntax
   def square(x: Int) = x * x;
-  println("Hello World")
+  println("SIS6/Hello World")
   println(16.toHexString);
   val a = 3;
   //  a = a + 2; immutable
